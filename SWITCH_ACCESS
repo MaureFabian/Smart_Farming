@@ -3,22 +3,27 @@
 !#################################
 
 enable
-  configure terminal
-    hostname SW-A1
-    no ip domain lookup
+	configure terminal
+		hostname SW_AS1 
+		no ip domain lookup
 		ip domain name Smart.Farming.LAB
-		enable secret Smart
+		enable secret Vodka
 		service password-encryption
 		crypto key generate rsa modulus 1024
-		username Talion privilege 15 secret Vodka
+		username Talion privilege 15 secret Smart
+		username Adji privilege 15 secret Smart
 		ip ssh version 2
-    !ip default-gateway xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     banner motd # Unauthorized access to this device is prohibited! #
     
-    line con 0 
+   		line con 0 
 			logging synchronous
-      password Vodka
+     			password Vodka
 			exit
+		line aux 0
+      			logging synchronous
+      			password INTERDIT
+      			login
+      			exit
 
 		line vty 0 15
 			logging synchronous
